@@ -1,16 +1,3 @@
-# 后端-社区管理系统
-
-数据库对应只有三张表
-
-- Members
-- Community
-- Record
-
-## SQL
-
-`MySQL8.0+`
-
-```sql
 /*
  Navicat Premium Data Transfer
 
@@ -91,5 +78,3 @@ DROP VIEW IF EXISTS `record_vo`;
 CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `record_vo` AS select `record`.`rRecordTime` AS `rRecordTime`,`record`.`rIsHosehold` AS `rIsHosehold`,`record`.`rIsOutCity` AS `rIsOutCity`,`record`.`rIsFromForeign` AS `rIsFromForeign`,`record`.`rId` AS `rId`,`community`.`cName` AS `cName`,`members`.`mName` AS `mName`,`members`.`mPhone` AS `mPhone`,`community`.`cTel` AS `cTel`,`community`.`cStreet` AS `cStreet` from ((`members` join `community`) join `record` on(((`community`.`cId` = `record`.`cId`) and (`members`.`mId` = `record`.`mId`))));
 
 SET FOREIGN_KEY_CHECKS = 1;
-```
-
