@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Index</title>
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+    </head>
+    <body>
+        
+    </body>
+</html>
+<script>
+    function f() {
+        $.ajax({
+            url: 'http://localhost:8080/',
+            async: true,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        })
+    }
+</script>

@@ -1,0 +1,39 @@
+# 应用名称
+# 记得安装并启动 redis
+spring:
+  application:
+    name: community_system
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: xianka
+    url: jdbc:mysql://pressed.top:3306/community_system?allowMultiQueries=true&characterEncoding=utf-8
+
+pagehelper:
+  reasonable: true
+
+server:
+  port: 8080
+
+mybatis:
+  configuration:
+    cache-enabled: true
+#    map-underscore-to-camel-case: false
+
+logging:
+  level:
+    jmu.shijh: debug
+
+wx-program:
+  url: https://api.weixin.qq.com/wxa/getwxacodeunlimit
+  app-id: wx1fd0abc75b225e3e
+  app-secret: 8038e2460f331a828db9a8ceef5399d0
+  width: 300
+  page: pages/person/person
+
+
+snowflake:
+  work-id: 1
+  date-center-id: 1
+  sequence: 1
