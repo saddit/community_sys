@@ -28,7 +28,6 @@ logging:
 wx-program:
   url: https://api.weixin.qq.com/wxa/getwxacodeunlimit
   app-id: wx1fd0abc75b225e3e
-  app-secret: 8038e2460f331a828db9a8ceef5399d0
   width: 300
   page: pages/person/person
 
