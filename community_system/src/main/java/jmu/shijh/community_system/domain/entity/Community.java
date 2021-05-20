@@ -5,12 +5,14 @@ import java.io.Serializable;
 import jmu.shijh.community_system.common.annotation.PrimaryField;
 import jmu.shijh.community_system.common.annotation.UpdateField;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * null
  * @TableName community
  */
 @Data
+@Accessors(chain = true)
 public class Community implements Serializable {
     /**
      * 

@@ -55,9 +55,14 @@ public class MemberServiceImpl implements MemberService {
     @Override
     @Transactional
     public void addBatch(List<Members> list) {
+        if (list.size() == 1) {
+            Members members = list.get(0);
+            Page<MemberDetailVO> exists = membersMapper.queryByDTO(new MembersDTO().setMPhone(members.getMPhone()));
+            if (exists.size() > 0) throw new CustomException("手机号重复");
+        }
         int i = membersMapper.insertBatch(list);
         if (i<list.size()) {
-            throw new CustomException("插入失败");
+            throw new CustomException("插入失败,手机号可能重复");
         }
     }
 

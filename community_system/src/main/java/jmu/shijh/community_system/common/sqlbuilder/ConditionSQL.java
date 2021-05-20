@@ -1,5 +1,7 @@
 package jmu.shijh.community_system.common.sqlbuilder;
 
+import java.util.List;
+
 public class ConditionSQL extends BaseQuerySQL<ConditionSQL>{
     public ConditionSQL(Object dto, String tableName) {
         super(dto, tableName);
@@ -9,7 +11,20 @@ public class ConditionSQL extends BaseQuerySQL<ConditionSQL>{
         return conditions(condition);
     }
 
-    public ConditionSQL cs(Conditions condition) {
-        return conditions(condition.toArray());
+    public ConditionSQL cs(Conditions conditions) {
+        return conditions(conditions.toArray());
+    }
+
+    public ConditionSQL css(Conditions... conditions) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("(");
+        for (Conditions condition : conditions) {
+            builder.append(cs(condition));
+        }
+        builder.append(")");
+        if (builder.length() > 2) {
+            unsafeWhere(builder.toString());
+        }
+        return this;
     }
 }

@@ -7,7 +7,7 @@ vue+springboot+android 前后端分离之扫码社区人员管理系统
   应用了阿里巴巴全家桶 fastjson druid
   二维码生成使用google-zxing
 - 手机端：
-  使用android开发的扫码app
+  使用android开发的扫码app，使用前填写最上方为后端IP地址
 
-（前端和apk内的请求地址写死了，暂时没分开）
+（前端请求地址写死了，请自行修改`src/js/base.`js内的`baseUrl`）
 

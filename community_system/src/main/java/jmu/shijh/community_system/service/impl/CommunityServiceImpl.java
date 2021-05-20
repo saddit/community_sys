@@ -84,6 +84,8 @@ public class CommunityServiceImpl implements CommunityService {
     @Override
     @Transactional
     public void addOne(Community community) {
+        Community exits = communityMapper.queryByDTO(new Community().setCName(community.getCName()));
+        if(exits != null) throw new CustomException("社区名重复");
         int i = communityMapper.insertBatch(Cl.list(community));
         if (i == 0) {
             throw new CustomException("添加失败");

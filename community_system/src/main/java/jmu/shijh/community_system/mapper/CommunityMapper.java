@@ -1,13 +1,12 @@
 package jmu.shijh.community_system.mapper;
 
 import com.github.pagehelper.Page;
+import jmu.shijh.community_system.common.sqlbuilder.Condition;
+import jmu.shijh.community_system.common.sqlbuilder.ConditionSQL;
 import jmu.shijh.community_system.common.sqlbuilder.InsertSQL;
 import jmu.shijh.community_system.common.sqlbuilder.UpdateSQL;
 import jmu.shijh.community_system.domain.entity.Community;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,6 +27,9 @@ public interface CommunityMapper {
     @Select("select * from community where cId=#{arg0}")
     Community queryDetailById(Integer id);
 
+    @SelectProvider(value = provider.class, method = "queryByDTO")
+    Community queryByDTO(Community community);
+
     @Select("select c.* from community c,members m where c.cId = m.cId and m.mId = #{arg0}")
     Community queryDetailByMemberId(Integer id);
 
@@ -42,10 +44,21 @@ public interface CommunityMapper {
 
     class provider {
         public String insertBatch(List<Community> list) {
-            return new InsertSQL(list,"community").toString();
+            return new InsertSQL(list, "community").toString();
         }
+
         public String updateSelective(Community community) {
             return new UpdateSQL(community, "community").toString();
+        }
+
+        public String queryByDTO(Community community) {
+            return new ConditionSQL(community, "community")
+                    .select("*")
+                    .cs(Condition.s()
+                            .get("cName", "cName")
+                            .get("cId", "cId")
+                            .get("cHead", "cHead")
+                    ).toString();
         }
     }
 }

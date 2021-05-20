@@ -2,6 +2,7 @@ package jmu.shijh.community_system.controller;
 
 import jmu.shijh.community_system.common.annotation.MultiRequestBody;
 import jmu.shijh.community_system.common.annotation.ParamCheck;
+import jmu.shijh.community_system.common.exception.CustomException;
 import jmu.shijh.community_system.common.util.*;
 import jmu.shijh.community_system.domain.dto.MembersDTO;
 import jmu.shijh.community_system.domain.entity.Members;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.annotation.MultipartConfig;
 import java.util.List;
 
 @RestController
@@ -49,7 +49,7 @@ public class MemberController {
     }
 
     @RequestMapping("/add/one")
-    @ParamCheck(include = {"cid","cHouseNumber","cName","cPhone"})
+    @ParamCheck(include = {"cid","mHouseNumber","mName","mPhone"})
     public JsonResp addMembers(@RequestBody(required = false) Members members)  {
         memberService.addBatch(Cl.list(members));
         return R.ok().msg("添加成功").build();
