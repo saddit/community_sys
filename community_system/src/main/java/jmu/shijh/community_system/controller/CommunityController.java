@@ -2,24 +2,17 @@ package jmu.shijh.community_system.controller;
 
 import com.alibaba.fastjson.JSON;
 import jmu.shijh.community_system.common.annotation.ParamCheck;
-import jmu.shijh.community_system.common.exception.CustomException;
 import jmu.shijh.community_system.common.util.*;
 import jmu.shijh.community_system.domain.dto.MembersDTO;
 import jmu.shijh.community_system.domain.entity.Community;
-import jmu.shijh.community_system.domain.entity.WxQrResp;
 import jmu.shijh.community_system.service.CommunityService;
 import jmu.shijh.community_system.service.MemberService;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.util.List;
 

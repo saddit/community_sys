@@ -39,6 +39,7 @@ import CommonCard from "../components/CommonCard.vue"
 import CommonTable from '../components/CommonTable.vue'
 import {changeBoolToCN} from '../js/api'
 
+
 export default {
   data() {
     return {
@@ -64,6 +65,11 @@ export default {
         {
           label: "性别",
           prop: "mSex",
+          icon: ""
+        },
+        {
+          label: "是否为业主",
+          prop: "mIsHousehold",
           icon: ""
         },
         {
@@ -177,7 +183,7 @@ export default {
           }
         })
         .catch(() => {
-          ElMessage.error("系统错误")
+          ElMessage.error("系统错误1")
         });
     },
     toRecordDetail(row) {
@@ -192,12 +198,13 @@ export default {
       .then(response=>{
         if(response.data.success) {
           this.memberData = response.data.data;
+          changeBoolToCN([this.memberData], ["mIsHousehold"])
         } else {
           ElMessage.warning(response.data.message)
         }
       })
       .catch(error=>{
-        ElMessage.error("系统错误")
+        ElMessage.error("系统错误2")
       })
     },
     getMemberRecord(index) {
@@ -220,7 +227,7 @@ export default {
         }
       })
       .catch(error=>{
-        ElMessage.error("系统错误")
+        ElMessage.error("系统错误3")
       })
     }
   },

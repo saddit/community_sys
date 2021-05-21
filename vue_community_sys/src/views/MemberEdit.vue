@@ -186,6 +186,7 @@ export default {
       .then(response=>{
         if(response.data.success) {
           ElMessage.success(response.data.message)
+          this.$router.push("/member");
         } else {
           ElMessage.warning(response.data.message)
         }

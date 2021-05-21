@@ -8,8 +8,8 @@ import java.lang.reflect.Field;
 
 @SuppressWarnings("unchecked")
 public abstract class BaseQuerySQL<T> {
-    private final Object dto;
-    private final SQL sql;
+    protected Object dto;
+    protected SQL sql;
 
     private Boolean camelToUnderscore = null;
 
@@ -95,7 +95,7 @@ public abstract class BaseQuerySQL<T> {
         }
     }
 
-    private boolean isNotNULL(String fieldName) {
+    protected boolean isNotNULL(String fieldName) {
         try {
             Field field = dto.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
@@ -113,6 +113,11 @@ public abstract class BaseQuerySQL<T> {
 
     public T eq(String column, String fieldName) {
         where("{} = #{{}}", column, fieldName);
+        return (T)this;
+    }
+
+    public T eqVal(String column, Object value) {
+        unsafeWhere(Str.f("{} = ${{}}", column, value.toString()));
         return (T)this;
     }
 

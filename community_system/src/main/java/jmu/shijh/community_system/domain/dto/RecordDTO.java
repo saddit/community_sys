@@ -17,7 +17,7 @@ public class RecordDTO {
      * 用户id
      */
     private Integer mId;
-
+    private Integer rId;
     /**
      * 社区id
      */

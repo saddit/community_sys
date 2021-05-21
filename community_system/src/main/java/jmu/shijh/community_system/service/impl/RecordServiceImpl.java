@@ -19,8 +19,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class RecordServiceImpl implements RecordService {
 
+
     @Autowired
     private RecordMapper recordMapper;
+
+    @Override
+    public void deleteRecord(RecordDTO dto) {
+        int i = recordMapper.deleteByDTO(dto);
+        if (i == 0) {
+            throw new CustomException("删除失败");
+        }
+    }
 
     @Override
     public PageVO getRecord(PageDTO page, RecordDTO dto) {

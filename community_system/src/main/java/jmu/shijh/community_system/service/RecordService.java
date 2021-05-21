@@ -11,4 +11,6 @@ public interface RecordService {
     PageVO getRelativeMembers(PageDTO page, RecordDTO dto);
 
     void addNewRecord(Record record);
+
+    void deleteRecord(RecordDTO dto);
 }

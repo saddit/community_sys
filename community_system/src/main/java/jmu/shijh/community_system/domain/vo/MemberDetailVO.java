@@ -36,6 +36,8 @@ public class MemberDetailVO {
      */
     private String mHouseNumber;
 
+    private String mHouse;
+
     /**
      * 工作单位
      */

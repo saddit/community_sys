@@ -13,10 +13,7 @@ import jmu.shijh.community_system.service.CommunityService;
 import jmu.shijh.community_system.service.MemberService;
 import jmu.shijh.community_system.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/record")
@@ -57,6 +54,12 @@ public class RecordController {
         }
         PageVO res = recordService.getRecord(pageInfo, dto);
         return R.ok().data(res).build();
+    }
+
+    @GetMapping("/delete/{id}")
+    public JsonResp delete(@PathVariable("id") Integer rid) {
+        recordService.deleteRecord(new RecordDTO().setRId(rid));
+        return R.ok().build();
     }
 
     @RequestMapping("/members/page")

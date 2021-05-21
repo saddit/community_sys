@@ -86,8 +86,8 @@ export default {
           show: true
         },
         {
-          label: "楼房号",
-          prop: "mHouseNumber",
+          label: "住宅",
+          prop: "mHouse",
           show: true
         },
         {

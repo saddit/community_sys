@@ -188,7 +188,7 @@ export default {
   methods:{ 
     deleteRecord(row) {
       this.$axios
-        .post("/record/delete/" + row.rId)
+        .get("/record/delete/" + row.rId)
           .then((resp) => {
           if (resp.data.success) {
             ElMessage.success(resp.data.message);

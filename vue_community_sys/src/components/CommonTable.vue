@@ -5,7 +5,7 @@
         <el-table-column :prop="col.prop" :label="col.label" v-if="col.show">
         </el-table-column>
       </template>
-      <el-table-column label="操作" width="210px" resizable="false"> 
+      <el-table-column label="操作" width="210px" :resizable="false"> 
         <template #default="scope">
           <el-button v-if="opEdit" @click="$emit('click-edit',scope.row)" type="primary" size="small">编辑</el-button>
           <el-popconfirm v-if="opDel" title="确定删除吗？" @confirm="$emit('click-delete',scope.row)">
